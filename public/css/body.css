@@ -1,0 +1,27 @@
+
+
+/*header, main, footer{
+  padding-left: 300px;
+}*/
+
+/*@media only screen and (max-width : 992px)
+{
+  header, main, footer {
+    padding-left: 0;
+                     }
+  #button-collpase{
+    display: inherit;
+                     }
+}*/
+/*this is for the slide-menu take the place and the space to the header,footer and main*/
+@media only screen and (min-width: 0){
+  main{font-size:12px;}
+header, main, footer {
+      padding-left: 300px;
+    }
+/*this it is for menu button i main for mobile o tablet screen*/
+    @media only screen and (max-width : 992px) {
+      header, main, footer {
+        padding-left: 0;
+      }
+    }

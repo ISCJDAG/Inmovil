@@ -1,0 +1,3 @@
+# este archivo protegera todo el contenido de la carpeta app
+# para que terceros no puedan accerder a ella solo el desarrollador o desarrolladores.
+Options -Indexes

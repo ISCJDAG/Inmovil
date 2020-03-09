@@ -1,0 +1,9 @@
+# Nos ayudara a redireccionar todo las pagians o vistas a este index publico.
+<IfModule mod_rewrite.c>
+Options -Multiviews
+RewriteEngine On
+RewriteBase /Inventory/public
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]
+</IfModule>

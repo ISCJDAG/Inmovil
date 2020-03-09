@@ -1,0 +1,9 @@
+# Este archivo nos ayudara a que mi url esta mas limpia quitando el la carpeta public
+# en otras palabras eliminando pero accediento a todo ejemplo
+# de localhost/Inventory/public/index.php
+# a localhost/Inventory/index.php.
+<IfModule mod_rewrite.c>
+  RewriteEngine on
+  RewriteRule ^$ public/ [L]
+  RewriteRule (.*) public/$1 [L]
+</IfModule>
