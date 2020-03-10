@@ -6,7 +6,7 @@
 
 <span class=" blue-grey-text darken-3 center">
 	<h3>
-		<?php echo $datos['users']; ?>
+		<?php  echo $datos['users']; ?>
 	</h3>
 </span>
 <div class="row"></div>
@@ -87,7 +87,7 @@
 							<?php echo  $user->idUser; ?>
 						</td>
 						<td>
-							<?php echo $user->name;?>
+							<?php echo $user->names;?>
 						</td>
 						<td>
 							<?php echo $user->nick;?>
@@ -100,15 +100,15 @@
 							 width="50" />
 						</td>
 						<td>
-							<?php echo $user->level; ?>
+							<?php echo $user->levels; ?>
 						</td>
 						<td>
-							<?php if($user->block == 0):?>
+							<?php if($user->blocks == 0):?>
 							<a href="#" class="waves-effect waves-light light-green lighten-1">
 								<i class="material-icons white-text">lock_open</i>
 							</a>
 							<?php endif; ?>
-							<?php if($user->block != 0): ?>
+							<?php if($user->blocks != 0): ?>
 							<a href="#" class="waves-effect waves-light red darken-1">
 								<i class="material-icons white-text">lock</i>
 							</a>

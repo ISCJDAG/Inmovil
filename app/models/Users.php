@@ -21,15 +21,16 @@
 // INSERTAR
 // ===========================
       public function addUser($datos){
-        $this->db->query('INSERT INTO Inmovil.user (nick,pass,name,email,block,level,photo,phone)
-                          values(:nick,:pass,:name,:email,:block,:level,:photo,:phone)');
+        
+        $this->db->query('INSERT INTO Inmovil.user (nick,pass,names,email,blocks,levels,photo,phone)
+                          values(:nick,:pass,:names,:email,:blocks,:levels,:photo,:phone)');
           // vincular valores.
           $this->db->bind(':nick',$datos['nickname']);
           $this->db->bind(':pass',$datos['pass']);
-          $this->db->bind(':name',$datos['complet_name']);
+          $this->db->bind(':names',$datos['complet_name']);
           $this->db->bind(':email',$datos['email']);
-          $this->db->bind(':level',$datos['level']);
-          $this->db->bind(':block',$datos['block']);
+          $this->db->bind(':levels',$datos['level']);
+          $this->db->bind(':blocks',$datos['block']);
           $this->db->bind(':photo',$datos['photo']);
           $this->db->bind(':phone',$datos['phone']);
 
@@ -40,10 +41,10 @@
             }
             else{
               return false;
-
+              
             }
           } catch (Exception $e) {
-            echo $e->getMessage();
+            var_dump( $e->getMessage());
           }
 
 

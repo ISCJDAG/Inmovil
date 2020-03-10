@@ -28,11 +28,6 @@
      * ==========================
      */
 
-     public function nickIsUsed($nick){
-      
-
-
-     }
     
 // end of my class
   }

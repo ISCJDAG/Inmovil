@@ -30,24 +30,22 @@
     public function Add_User(){
 
       if ($_SERVER['REQUEST_METHOD']=='POST') {
-        $block = 0;
-        if(!empty($_POST)){
-          $names = htmlentities($_POST['name']);
-          $nickname =htmlentities($_POST['nickname']);
-          $pass =  htmlentities($_POST['pass']);
-          $emial = htmlentities($_POST['email']);
-          $level = htmlentities($_POST['level']);
-          $phone = htmlentities($_POST['phone']);
+        
+        if (isset($_POST['name']) &&  isset($_POST['nickname']) &&
+            isset($_POST['pass']) && isset($_POST['email']) &&
+            isset($_POST['level']) && isset($_POST['phone'])) {
+              if(!empty($_POST)){
+                $names = htmlentities($_POST['name']);
+                $nickname =htmlentities($_POST['nickname']);
+                $pass =  htmlentities($_POST['pass']);
+                $emial = htmlentities($_POST['email']);
+                $level = htmlentities($_POST['level']);
+                $phone = htmlentities($_POST['phone']);
+              }else{
+                alertMessage("Algunos datos estan vacios revise porfavor",
+                "Alerta","warning","user","Add_user","",$data='');
+              }
         }
-
-// campos importantes que no deben de ir vacios.
-        //if (empty($datos['complet_name']) || empty($datos['nickname']) || empty($datos['pass']) || empty($datos['level'])) {
-          if(empty($level)){
-            $level = 'Empleado';
-           
-            //exit;
-          }
-
 // ====================
 // verificar que el nombre no lleve numeros.
 // ====================
@@ -60,7 +58,7 @@ for($i=0; $i < strlen($names); $i++){
     $title = 'Alert warning';
     $type = 'error';
     $v = 'user';
-    $metod ='Add_new_User';
+    $metod ='Add_User';
     $id='';
     alertMessage($text,$title,$type,$v,$metod,$id);
       //exit;
@@ -81,7 +79,7 @@ if($contrasena < 8 || $contrasena > 20){
   $title = 'The password: its to short or to long!';
   $type = 'error';
   $v = 'user';
-  $metod ='Add_New_User';
+  $metod ='Add_User';
   $id='';
   alertMessage($text,$title,$type,$v,$metod,$id);
   //exit;
@@ -96,7 +94,7 @@ if (!empty($emial)) {
       $title = 'The Email: '.$email.'its wrong';
       $type = 'error';
       $v = 'user';
-      $metod ='Add_New_User';
+      $metod ='Add_User';
       $id='';
       alertMessage($text,$title,$type,$v,$metod,$id);
       //exit;
@@ -141,12 +139,11 @@ if ($archivo != '') {
  // SAVE THE PASSWORD.
  // =================================
  $pass = sha1($pass);
-
+ $block = 0;
 
 
  $datos=[
-    //por el momento no enviar.
-    /*
+    
    'complet_name' => $names,
    'nickname' => $nickname,
    'pass' => $pass,
@@ -154,47 +151,31 @@ if ($archivo != '') {
    'level' => $level,
    'block' => $block,
    'phone' => $phone,
-   'photo' => $ruta,*/
+   'photo' => $ruta
 
  ];
-        
-        /**
-         * condicion para mandar lo datos a mi modelo y de ahi llevarlos a la base de datos
-         */
-        if($this->userModel->getEmail($email)){
-          $text = 'Este Email ya existe porfavor introdusca otro diferente!';
-          $title = $datos['email'];
-          $type = 'warning';
-          $v = 'user';
-          $metod ='Add_New_User';
-          $id='';
-          $datos=['complet_name' => $names,
-          'nickname' => $nickname,'level' => $level,'phone' => $phone,'photo' => $ruta,];
-          alertMessage($text,$title,$type,$v,$metod,$id,$datos);
-        }else{
-
-          if($this->userModel->addUser($datos)){
+        if($this->userModel->addUser($datos)){
             $text = 'Se agrego correctamente';
             $title = 'EL usuario: '.$nickname;
             $type = 'success';
-            $v = 'user';
+            $controller = 'user';
             $metod ='';
             $id='';
-            alertMessage($text,$title,$type,$v,$metod,$id);
-            //redirecionar('/user');
+            alertMessage($text,$title,$type,$controller,$metod,$id);
+            
   
           }else{
-            $text = 'Algo salio mal!';
+            $text = 'Algo salio mal no se pudo registrar!';
             $title = 'Error!';
             $type = 'error';
-            $v = 'user';
-            $metod ='Add_New_User';
+            $controller = 'user';
+            $metod ='Add_User';
             $id='';
-            alertMessage($text,$title,$type,$v,$metod,$id);
-              //exit;
+            alertMessage($text,$title,$type,$controller,$metod,$id);
+              
           }
 
-        }
+        
         
 //este else  es despues del if de si no es $_SERVER['REQUEST_METHOD']=='POST'
 //entonces hace lo siguente.

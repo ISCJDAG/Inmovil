@@ -29,7 +29,7 @@
   <div class="col s10">
     <div class="card z-depth-5 grey lighten-4">
     <div class="card-content">
-      <form  action="<?php echo PATH_URL; ?>/user/Add_New_User" method="POST" enctype="multipart/form-data">
+      <form  action="<?php echo PATH_URL; ?>/user/Add_User" method="POST" enctype="multipart/form-data">
 
         <div class="row">
 
