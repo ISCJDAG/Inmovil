@@ -45,11 +45,11 @@
     <li><a href="<?php echo PATH_URL;?>" class=""><i class="material-icons blue-text">home
     </i>Home</a></li>
     <div class="divider"></div>
-    <li><a href="#"><i class="material-icons blue-text">web</i>Public_Web</a></li>
+    <li><a href="#"><i class="material-icons blue-text">web</i>Web Publica</a></li>
     <div class="divider"></div>
-    <li><a href="<?php echo PATH_URL; ?>/user"><i class="material-icons orange-text">account_circle</i>Users</a></li>
+    <li><a href="<?php echo PATH_URL; ?>/user"><i class="material-icons orange-text">account_circle</i>Usuarios</a></li>
     <div class="divider"></div>
-    <li><a href="<?php echo PATH_URL; ?>/custumers"><i class="material-icons" style="color:#dce775;">folder_shared</i>Custumers</a></li>
+    <li><a href="<?php echo PATH_URL; ?>/custumers"><i class="material-icons" style="color:#dce775;">folder_shared</i>Clientes</a></li>
     <div class="divider"></div>
     <li><a href="#" class="dropdown-trigger" data-target="propiedades">Propiedades<i class="material-icons right">arrow_drop_down</i><i class="material-icons green-text">location_city</i></a></li>
     <div class="divider"></div>
@@ -62,13 +62,13 @@
   <ul id="propiedades"  class="dropdown-content">
     <li><a href="#"><i class="material-icons">assessment</i>General</a></li>
     <li class="divider"></li>
-    <li><a href="#"><i class="material-icons">assignment_turned_in</i>Sell</a></li>
+    <li><a href="#"><i class="material-icons">assignment_turned_in</i>Ventas</a></li>
     <li class="divider"></li>
-    <li><a href="#"><i class="material-icons">markunread_mailbox</i>Rent</a></li>
+    <li><a href="#"><i class="material-icons">markunread_mailbox</i>Rentas</a></li>
     <li class="divider"></li>
-    <li><a href="#"><i class="material-icons">repeat</i>Traspasing</a></li>
+    <li><a href="#"><i class="material-icons">repeat</i>Traspaso</a></li>
     <li class="divider"></li>
-    <li><a href="#"><i class="material-icons">pan_tool</i>Busy</a></li>
+    <li><a href="#"><i class="material-icons">pan_tool</i>Entratos</a></li>
     <li class="divider"></li>
-    <li><a href="#"><i class="material-icons">cancel</i>Cancel</a></li>
+    <li><a href="#"><i class="material-icons">cancel</i>Canceladas</a></li>
   </ul>

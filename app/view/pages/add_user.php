@@ -36,13 +36,13 @@
           <div class="input-field col s12 m6 l6">
             <i class="material-icons prefix">account_circle</i>
             <input  id="name" type="text" class="validate" required name="name" pattern="[A-Za-záÁéÉíÍÓóÚúńŃ/s ]+" title="after lastName make a space">
-            <label for="name">Name</label>
+            <label for="name">Nombre completo</label>
           </div>
 
           <div class="input-field col s12 m6 l6">
             <i class="material-icons prefix">face</i>
             <input type="text" class="validate" required id="nickname" name="nickname">
-            <label for="nickname">Nick</label>
+            <label for="nickname">Nick de usuario</label>
           </div>
 
         </div>
@@ -52,7 +52,7 @@
           <div class="input-field col s12 m6 l6">
             <i class="material-icons prefix">phone</i>
             <input type="tel" required id="phone" name="phone" pattern="[0-9]{10}">
-            <label for="phone">Phone</label>
+            <label for="phone">Telefono</label>
           </div>
 
           <div class="input-field col s12 m6 l6">
@@ -75,7 +75,7 @@
           <div class="input-field col s12 m6 l6">
             <i class="material-icons prefix grey-text">vpn_key</i>
             <input type="password" required id="pass2" name="pass2">
-            <label for="pass2">Verificar pass</label>
+            <label for="pass2">Verificar password</label>
           </div>
 
         </div>
@@ -136,7 +136,7 @@
           <div class="col s12 center">
             <!-- CANCEL -->
             <a href="<?php echo PATH_URL; ?>/user" class="waves-effect waves-light btn red darken-1">
-              <span class="white-text">Cancel</span>
+              <span class="white-text">Cancelar</span>
             </a>
             <!-- SAVE -->
             <!-- <a href="#" class="waves-effect waves-light btn lime darken-1" id="aceptar" type="sumbit">
@@ -144,7 +144,7 @@
             </a> -->
             <button type="submit" name="button"
             class="waves-effect waves-light btn lime darken-1" id="btn_save">
-              <span class="white-text">Accept</span>
+              <span class="white-text">Aceptar</span>
             </button>
 
           </div>
