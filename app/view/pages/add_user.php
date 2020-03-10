@@ -35,7 +35,8 @@
 
           <div class="input-field col s12 m6 l6">
             <i class="material-icons prefix">account_circle</i>
-            <input  id="name" type="text" class="validate" required name="name" pattern="[A-Za-záÁéÉíÍÓóÚúńŃ/s ]+" title="after lastName make a space">
+            <input  id="name" type="text" class="validate" required name="name" pattern="[A-Za-záÁéÉíÍÓóÚúńŃ/s ]+" 
+            title="after lastName make a space">
             <label for="name">Nombre completo</label>
           </div>
 
@@ -57,7 +58,7 @@
 
           <div class="input-field col s12 m6 l6">
             <i class="material-icons prefix">email</i>
-            <input type="email" id="email" class="validate" name="email">
+            <input type="email" id="email" class="validate" name="email" required>
             <label for="email">Email</label>
             <span class="helper-text" data-error="wrong that is not email" data-success="Right"></span>
           </div>
@@ -86,7 +87,7 @@
 
           <div class="input-field col s12 m6 l6">
           <i class="material-icons prefix">assignment_ind</i>
-            <select name="level" id="level">
+            <select name="level" id="level" required>
               <option value="">Elije el nivel de Usuario</option>
               <option value="Admin">Admin</option>
               <option value="Supervisor">Supevisor</option>

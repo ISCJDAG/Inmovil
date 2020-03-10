@@ -25,7 +25,9 @@
       $this->vista('pages/user',$datos);
     }
 // 
-//  ========= ADD NEW USER     =========
+//  ========= 
+//  ADD NEW USER     
+//  =========
 //
     public function Add_User(){
 
@@ -41,65 +43,9 @@
                 $emial = htmlentities($_POST['email']);
                 $level = htmlentities($_POST['level']);
                 $phone = htmlentities($_POST['phone']);
-              }else{
-                alertMessage("Algunos datos estan vacios revise porfavor",
-                "Alerta","warning","user","Add_user","",$data='');
               }
+              
         }
-// ====================
-// verificar que el nombre no lleve numeros.
-// ====================
-$caracteres = "abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZáÁéÉíÍÓóÚúńÑ ";
-
-for($i=0; $i < strlen($names); $i++){
-  $search = substr($names,$i,1);
-  if (strpos($caracteres,$search) === false) {
-    $text = 'Fine a character or symbol in the name its invalid';
-    $title = 'Alert warning';
-    $type = 'error';
-    $v = 'user';
-    $metod ='Add_User';
-    $id='';
-    alertMessage($text,$title,$type,$v,$metod,$id);
-      //exit;
-  }
-}
-// ======================================
-//
-
-// =============================
-// validar longuitud del nick y contraseña.
-// =============================
-$nicks = strlen($nickname);
-$contrasena = strlen($pass);
-
-
-if($contrasena < 8 || $contrasena > 20){
-  $text = 'The password only can have 8 or 20 caracters';
-  $title = 'The password: its to short or to long!';
-  $type = 'error';
-  $v = 'user';
-  $metod ='Add_User';
-  $id='';
-  alertMessage($text,$title,$type,$v,$metod,$id);
-  //exit;
-}
-
-// ==================
-// verificar el email.
-// ==================
-if (!empty($emial)) {
-    if(!filter_var($emial,FILTER_VALIDATE_EMAIL)){
-      $text = 'the Email its wrong!';
-      $title = 'The Email: '.$email.'its wrong';
-      $type = 'error';
-      $v = 'user';
-      $metod ='Add_User';
-      $id='';
-      alertMessage($text,$title,$type,$v,$metod,$id);
-      //exit;
-    }
-}
 
 // ==========================
 // foto de perfil de Usuario.
@@ -139,7 +85,7 @@ if ($archivo != '') {
  // SAVE THE PASSWORD.
  // =================================
  $pass = sha1($pass);
- $block = 0;
+ $block =0;
 
 
  $datos=[
@@ -204,60 +150,18 @@ if ($archivo != '') {
 // *****************************
 //
 
-public function edit_user($id){
+public function editar_usuario($id){
   if ($_SERVER['REQUEST_METHOD']=='POST') {
-    $block = 0;
+    
 
     if(!empty($_POST)){
-      $names = htmlentities($_POST['name']);
+      
       $nickname =htmlentities($_POST['nickname']);
-      $pass =  htmlentities($_POST['pass']);
       $emial = htmlentities($_POST['email']);
       $level = htmlentities($_POST['level']);
       $phone = htmlentities($_POST['phone']);
 
     }
-
-
-// campos importantes que no deben de ir vacios.
-    if (empty($names) || empty($nickname) || empty($pass) || empty($level)) {
-      exit;
-    }
-// ====================
-// verificar que el nombre no lleve numeros.
-// ====================
-$caracteres = "abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZáÁéÉíÍÓóÚúńÑ ";
-
-for($i=0; $i < strlen($names); $i++){
-$search = substr($names,$i,1);
-if (strpos($caracteres,$search) === false) {
-  exit;
-}
-}
-// ======================================
-//
-
-// =============================
-// validar longuitud del nick y contraseña.
-// =============================
-$nicks = strlen($nickname);
-$contrasena = strlen($pass);
-
-if ($nicks > 15 || $nicks < 6) {
-exit;
-}
-if($contrasena < 8 || $contrasena > 20){
-exit;
-}
-
-// ==================
-// verificar el email.
-// ==================
-if (!empty($emial)) {
-if(!filter_var($emial,FILTER_VALIDATE_EMAIL)){
-  exit;
-}
-}
 
 // ==========================
 // foto de perfil de Usuario.
@@ -294,30 +198,28 @@ $pass = sha1($pass);
 
 
 $datos=[
-/*'id'=> $id,
-'complet_name' => $names,
+'id'=> $id,
 'nickname' => $nickname,
-'pass' => $pass,
 'email' => $emial,
 'level' => $level,
-'block' => $block,
+
 'phone' => $phone,
-'photo' => $ruta,
-*/
+'photo' => $ruta
+
 ];
 
-    if($this->userModel->edit_user($datos)){
-      $text = 'Se Edito Correctamente';
+    if($this->userModel->update_user($datos)){
+      $text = 'Se edito Correctamente';
       $title = 'EL usuario: '.$nickname;
       $type = 'success';
       $v = 'user';
       $metod ='';
       $id='';
       alertMessage($text,$title,$type,$v,$metod,$id);
-      //redirecionar('/user');
+      
 
     }else{
-      $text = 'No se pudo editar ocurrio un error';
+      $text = 'No se pudo editar ocurrio un error en el sistema';
       $title = 'EL usuario: '.$nickname;
       $type = 'error';
       $v = 'user';
@@ -336,17 +238,15 @@ $datos=[
     //Traer lo datos de la base de 
     //datos del usuario a editar.
     //=================
-    //$usuario = $this->userModel->getUser($id);
+    $usuario = $this->userModel->getUser($id);
     $datos =[
-      /*'id'=> $usuario->id,
-      'complete_name' => $usuario->complete_name,
-      'nickname' => $usuario->nickname,
-      'pass' => $usuario->pass,
+      'id'=> $usuario->idUser,
+      'nickname' => $usuario->nick,
       'email' => $usuario->email,
-      'level' => $usuario->level,
-      'block' => $usuario->block,
+      'level' => $usuario->levels,
       'phone' => $usuario->phone,
-      'photo' => $usuario->photo*/
+      'photo' => $usuario->photo
+      
     ];
     $this->vista('pages/update_user',$datos);
   }
