@@ -21,15 +21,16 @@
 // INSERTAR
 // ===========================
       public function addUser($datos){
-        $this->db->query('INSERT INTO Inmovil.user (nick,pass,name,email,block,level,photo,phone)
-                          values(:nick,:pass,:name,:email,:block,:level,:photo,:phone)');
+        
+        $this->db->query('INSERT INTO Inmovil.user (nick,pass,names,email,blocks,levels,photo,phone)
+                          values(:nick,:pass,:names,:email,:blocks,:levels,:photo,:phone)');
           // vincular valores.
           $this->db->bind(':nick',$datos['nickname']);
           $this->db->bind(':pass',$datos['pass']);
-          $this->db->bind(':name',$datos['complet_name']);
+          $this->db->bind(':names',$datos['complet_name']);
           $this->db->bind(':email',$datos['email']);
-          $this->db->bind(':level',$datos['level']);
-          $this->db->bind(':block',$datos['block']);
+          $this->db->bind(':levels',$datos['level']);
+          $this->db->bind(':blocks',$datos['block']);
           $this->db->bind(':photo',$datos['photo']);
           $this->db->bind(':phone',$datos['phone']);
 
@@ -40,10 +41,10 @@
             }
             else{
               return false;
-
+              
             }
           } catch (Exception $e) {
-            echo $e->getMessage();
+            var_dump( $e->getMessage());
           }
 
 
@@ -52,17 +53,15 @@
 // ==============================
 // ********* ACTUALIZAR***********
 // ============================
- public function edit_user($datos){
-    $this->db->query("UPDATE inventario.user set complete_name=:name,nickname=:nick,pass=:pass,email=:email,phone=:phone,photo=:photo,level=:level,block=:block Where id=:id");
+ public function update_user($datos){
+    $this->db->query("UPDATE Inmovil.user  set nick=:nick,email=:email,
+    phone=:phone,photo=:photo,levels=:levels Where idUser=:id");
 
     // vincular valores.
     $this->db->bind(':id',$datos['id']);
     $this->db->bind(':nick',$datos['nickname']);
-    $this->db->bind(':pass',$datos['pass']);
-    $this->db->bind(':name',$datos['complet_name']);
     $this->db->bind(':email',$datos['email']);
-    $this->db->bind(':level',$datos['level']);
-    $this->db->bind(':block',$datos['block']);
+    $this->db->bind(':levels',$datos['level']);
     $this->db->bind(':photo',$datos['photo']);
     $this->db->bind(':phone',$datos['phone']);
 
@@ -83,11 +82,17 @@
  // ***********GET USER *********
  // ===========================
  public function getUser($id){
-   $this->db->query("SELECT * FROM inventario.user WHERE id = :id ");
+   $this->db->query("SELECT * FROM Inmovil.user WHERE idUser = :id ");
    $this->db->bind(':id',$id);
-   $fila = $this->db->get_one_Registro();
-   return $fila;
+  try{ 
+    $fila = $this->db->get_one_Registro();
+    return $fila;
+  }
+    catch (Exception $e) {
+      echo $e.getMessage();
+  
  }
+}
  // ============================
  // ***********DELETE USER *********
  // ===========================

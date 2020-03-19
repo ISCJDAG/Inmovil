@@ -14,18 +14,18 @@
           $texto = htmlentities($_GET['text']);
           $titulo= htmlentities($_GET['title']);
           $tipo = htmlentities($_GET['type']);
-          $v = htmlentities($_GET['v']);
+          $controller = htmlentities($_GET['controller']);
           $metod = htmlentities($_GET['metodo']);
           $id = htmlentities($_GET['id']);
-          $data=htmlentities($_GET['data']);
+          $datos=htmlentities($_GET['datos']);
         }
         // switch para controllador
-        switch ($v) {
+        switch ($controller) {
           case 'inicio':
               $path = PATH_URL;
             break;
           case 'user':
-              $path = PATH_URL.'/'.$v;
+              $path = PATH_URL.'/'.$controller;
             break;
             // aqui ire creando las rutas conforme las vayamos necesitando.
         }
@@ -34,16 +34,14 @@
           case 'index':
                 $path = $path;
             break;
-          case 'Add_New_User':
+          case 'Add_User':
+              if($datos != []){
+                $path = $path.'/'.$metod.'/'.$datos;
+              }
+              if($datos == []){
                 $path = $path.'/'.$metod;
-               /* if(!empty($data)){
-                  $name = $data['complete_name'];
-                  $phone = $data['phone'];
-                  $photo= $data['photo'];
-                  $level = $data['level'];
-                  $path = $path.'/&'.$name.'&'.$phone.'&'.$photo.'&'.$level;
-
-                }*/
+              }
+                
             break;
 
         }
@@ -63,14 +61,7 @@
         confirmButtonColor: '#3085d6',
         confirmButtonText: 'Continue!'
       }).then(function(){
-        /*var datajs = '<?php echo $data;?>';
-        if(datajs.length>0){
-          location.href= '<? echo $path."/".$data?>';
-          alert(datajs+' tengo datos '+ location.href);
-        }else{
-          location.href = '<?php echo $path;  ?>'
-          alert(location.href);
-        }*/
+        
         location.href = '<?php echo $path;  ?>';
         
       })

@@ -10,11 +10,11 @@
     <div class="col s12 m6 l3">
         <div class="card light-blue darken-4 z-depth-5 ">
         <div class="card-content light-blue darken-2 white-text waves-effect waves-block waves-light">
-            <span class="card-title center">Sells</span>
+            <span class="card-title center">Ventas</span>
             <h3 class="center"><?php // here the quantity  ?>0</h3>
           </div>
           <div class="card-action">
-            <a class="indigo-text text-lighten-5" href="#">See More...</a>
+            <a class="indigo-text text-lighten-5" href="#">Ver Mas...</a>
           </div>
         </div>
       </div>
@@ -24,11 +24,11 @@
       <div class="col s12 m6 l3">
         <div class="card cyan darken-4 z-depth-5">
           <div class="card-content cyan darken-2 white-text waves-effect waves-block waves-light">
-            <span class="card-title center">Rent</span>
+            <span class="card-title center">Renta</span>
             <h3 class="center">0</h3>
           </div>
           <div class="card-action">
-            <a class="indigo-text text-lighten-5" href="#">See More...</a>
+            <a class="indigo-text text-lighten-5" href="#">Ver Mas...</a>
           </div>
         </div>
       </div>
@@ -38,11 +38,11 @@
       <div class="col s12 m6 l3">
         <div class="card yellow darken-4 z-depth-5">
           <div class="card-content yellow darken-5 white-text waves-effect waves-block waves-dark">
-            <span class="card-title center">Busy</span>
+            <span class="card-title center">Entratos</span>
             <h3 class="center">0</h3>
           </div>
           <div class="card-action">
-            <a class="indigo-text text-lighten-5" href="#">See More...</a>
+            <a class="indigo-text text-lighten-5" href="#">Ver Mas...</a>
           </div>
         </div>
       </div>
@@ -52,11 +52,11 @@
       <div class="col s12 m6 l3">
         <div class="card green darken-4 z-depth-5">
           <div class="card-content green darken-2 white-text waves-effect waves-block waves-light">
-            <span class="card-title center">Traspassing</span>
+            <span class="card-title center">Traspaso</span>
             <h3 class="center">0</h3>
           </div>
           <div class="card-action">
-            <a  class="indigo-text text-lighten-5" href="#">See More...</a>
+            <a  class="indigo-text text-lighten-5" href="#">Ver Mas...</a>
           </div>
         </div>
       </div>

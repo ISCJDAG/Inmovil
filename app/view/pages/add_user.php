@@ -5,7 +5,6 @@
 <div class="row">
 <div class="input-field col s12 center">
   <img src="<?php echo PATH_PERFIL.'/user.jpg';?>" class="responsive-img circle center" width="120" >
-
 </div>
 </div>
 
@@ -29,20 +28,28 @@
   <div class="col s10">
     <div class="card z-depth-5 grey lighten-4">
     <div class="card-content">
-      <form  action="<?php echo PATH_URL; ?>/user/Add_New_User" method="POST" enctype="multipart/form-data">
+      <form  action="<?php echo PATH_URL; ?>/user/Add_User" method="POST" enctype="multipart/form-data">
 
         <div class="row">
 
           <div class="input-field col s12 m6 l6">
             <i class="material-icons prefix">account_circle</i>
-            <input  id="name" type="text" class="validate" required name="name" pattern="[A-Za-záÁéÉíÍÓóÚúńŃ/s ]+" title="after lastName make a space">
-            <label for="name">Name</label>
+
+            <?php  if(isset($datos['complet_name']) && $datos['complet_name']!=""):?>
+            <input  id="name" type="text" class="validate" required name="name" pattern="[A-Za-záÁéÉíÍÓóÚúńŃ/s ]+" 
+            value="<?php echo $datos['complet_name'];?>">
+            <? endif; ?>
+            <?php if(!isset($datos['complet_name'])):?>
+            <input  id="name" type="text" class="validate" required name="name" pattern="[A-Za-záÁéÉíÍÓóÚúńŃ/s ]+" 
+            >
+            <? endif; ?>
+            <label for="name">Nombre completo:</label>
           </div>
 
           <div class="input-field col s12 m6 l6">
             <i class="material-icons prefix">face</i>
             <input type="text" class="validate" required id="nickname" name="nickname">
-            <label for="nickname">Nick</label>
+            <label for="nickname">Nick de usuario</label>
           </div>
 
         </div>
@@ -52,12 +59,12 @@
           <div class="input-field col s12 m6 l6">
             <i class="material-icons prefix">phone</i>
             <input type="tel" required id="phone" name="phone" pattern="[0-9]{10}">
-            <label for="phone">Phone</label>
+            <label for="phone">Telefono</label>
           </div>
 
           <div class="input-field col s12 m6 l6">
             <i class="material-icons prefix">email</i>
-            <input type="email" id="email" class="validate" name="email">
+            <input type="email" id="email" class="validate" name="email" required>
             <label for="email">Email</label>
             <span class="helper-text" data-error="wrong that is not email" data-success="Right"></span>
           </div>
@@ -75,7 +82,7 @@
           <div class="input-field col s12 m6 l6">
             <i class="material-icons prefix grey-text">vpn_key</i>
             <input type="password" required id="pass2" name="pass2">
-            <label for="pass2">Verificar pass</label>
+            <label for="pass2">Verificar password</label>
           </div>
 
         </div>
@@ -86,7 +93,7 @@
 
           <div class="input-field col s12 m6 l6">
           <i class="material-icons prefix">assignment_ind</i>
-            <select name="level" id="level">
+            <select name="level" id="level" required>
               <option value="">Elije el nivel de Usuario</option>
               <option value="Admin">Admin</option>
               <option value="Supervisor">Supevisor</option>
@@ -136,7 +143,7 @@
           <div class="col s12 center">
             <!-- CANCEL -->
             <a href="<?php echo PATH_URL; ?>/user" class="waves-effect waves-light btn red darken-1">
-              <span class="white-text">Cancel</span>
+              <span class="white-text">Cancelar</span>
             </a>
             <!-- SAVE -->
             <!-- <a href="#" class="waves-effect waves-light btn lime darken-1" id="aceptar" type="sumbit">
@@ -144,7 +151,7 @@
             </a> -->
             <button type="submit" name="button"
             class="waves-effect waves-light btn lime darken-1" id="btn_save">
-              <span class="white-text">Accept</span>
+              <span class="white-text">Aceptar</span>
             </button>
 
           </div>

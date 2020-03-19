@@ -14,9 +14,9 @@
     /**
      * esta funcino es para ver el alert message.
      */
-    function alertMessage($text,$title,$type,$v,$metod,$id,$data=''){
+    function alertMessage($text,$title,$type,$controller,$metod,$id,$datos=[]){
       header('location: '.PATH_URL.'/inicio/alerta?text='.$text.
-      '&title='.$title.'&type='.$type.'&v='.$v.'&metodo='.$metod.'&id='.$id.'&data='.$data);
+      '&title='.$title.'&type='.$type.'&controller='.$controller.'&metodo='.$metod.'&id='.$id.'&datos='.$datos);
     }
    
 
