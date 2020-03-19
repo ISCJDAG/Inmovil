@@ -17,7 +17,7 @@
           $controller = htmlentities($_GET['controller']);
           $metod = htmlentities($_GET['metodo']);
           $id = htmlentities($_GET['id']);
-          $data=htmlentities($_GET['data']);
+          $datos=htmlentities($_GET['datos']);
         }
         // switch para controllador
         switch ($controller) {
@@ -35,7 +35,13 @@
                 $path = $path;
             break;
           case 'Add_User':
+              if($datos != []){
+                $path = $path.'/'.$metod.'/'.$datos;
+              }
+              if($datos == []){
                 $path = $path.'/'.$metod;
+              }
+                
             break;
 
         }
@@ -55,14 +61,7 @@
         confirmButtonColor: '#3085d6',
         confirmButtonText: 'Continue!'
       }).then(function(){
-        /*var datajs = '<?php echo $data;?>';
-        if(datajs.length>0){
-          location.href= '<? echo $path."/".$data?>';
-          alert(datajs+' tengo datos '+ location.href);
-        }else{
-          location.href = '<?php echo $path;  ?>'
-          alert(location.href);
-        }*/
+        
         location.href = '<?php echo $path;  ?>';
         
       })

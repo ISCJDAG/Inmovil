@@ -5,7 +5,6 @@
 <div class="row">
 <div class="input-field col s12 center">
   <img src="<?php echo PATH_PERFIL.'/user.jpg';?>" class="responsive-img circle center" width="120" >
-
 </div>
 </div>
 
@@ -35,9 +34,16 @@
 
           <div class="input-field col s12 m6 l6">
             <i class="material-icons prefix">account_circle</i>
+
+            <?php  if(isset($datos['complet_name']) && $datos['complet_name']!=""):?>
             <input  id="name" type="text" class="validate" required name="name" pattern="[A-Za-záÁéÉíÍÓóÚúńŃ/s ]+" 
-            title="after lastName make a space">
-            <label for="name">Nombre completo</label>
+            value="<?php echo $datos['complet_name'];?>">
+            <? endif; ?>
+            <?php if(!isset($datos['complet_name'])):?>
+            <input  id="name" type="text" class="validate" required name="name" pattern="[A-Za-záÁéÉíÍÓóÚúńŃ/s ]+" 
+            >
+            <? endif; ?>
+            <label for="name">Nombre completo:</label>
           </div>
 
           <div class="input-field col s12 m6 l6">
