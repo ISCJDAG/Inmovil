@@ -35,11 +35,11 @@
                 $path = $path;
             break;
           case 'Add_User':
-              if($datos != []){
+              if($datos != ""){
                 $path = $path.'/'.$metod.'/'.$datos;
               }
-              if($datos == []){
-                $path = $path.'/'.$metod;
+              if($datos == ""){
+                $path = $path.'/'.$metod; 
               }
                 
             break;
