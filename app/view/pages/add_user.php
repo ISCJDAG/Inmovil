@@ -28,7 +28,7 @@
   <div class="col s10">
     <div class="card z-depth-5 grey lighten-4">
     <div class="card-content">
-      <form  action="<?php echo PATH_URL; ?>/user/Add_User" method="POST" enctype="multipart/form-data">
+      <form  action="<?php echo PATH_URL; ?>/user/Add_User" method="POST" enctype="multipart/form-data" id="new_form">
 
         <div class="row">
 
@@ -64,9 +64,9 @@
 
           <div class="input-field col s12 m6 l6">
             <i class="material-icons prefix">email</i>
-            <input type="email" id="email" class="validate" name="email" required>
+            <input type="email" id="email" class="validate" name="email" required pattern="^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$">
             <label for="email">Email</label>
-            <span class="helper-text" data-error="wrong that is not email" data-success="Right"></span>
+            <span class="helper-text" data-error="Incorrecto" data-success="Correcto"></span>
           </div>
 
         </div>
@@ -175,8 +175,5 @@
 <script src="<?php echo PATH_JS.'/validate_add_user.js';?>"></script>
 <script>
 </script>
-
-
-
 </body>
 </html>

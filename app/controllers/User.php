@@ -50,6 +50,7 @@ class User extends Controller
           $names = htmlentities($_POST['name']);
           $nickname = htmlentities($_POST['nickname']);
           $pass = htmlentities($_POST['pass']);
+          $pass2= htmlentities($_POST['pass2']);
           $emial = htmlentities($_POST['email']);
           $level = htmlentities($_POST['level']);
           $phone = htmlentities($_POST['phone']);
@@ -57,6 +58,7 @@ class User extends Controller
           $names = trim($names);
           $nickname = trim($nickname);
           $pass = trim($pass);
+          $pass2 = trim($pass2);
         }
 
       }
@@ -69,6 +71,10 @@ class User extends Controller
       if (!is_string($emial) || !filter_var($emial, FILTER_VALIDATE_EMAIL)) {
         $error = "El email es incorrecto";
         
+      }
+      //validar pass y pass2
+      if($pass2 != $pass){
+          $error = "Las passwords no coinciden!";
       }
 
  // =================================
@@ -149,7 +155,9 @@ class User extends Controller
           alertMessage($text, $title, $type, $controller, $metod, $id);
         }
       }else{
-        $text = 'Algo salio mal no se pudo registrar, verifique los campos que esten correctos';
+        //return $error;
+        alertMessage($error, 'Advertencia', 'warning', 'user', 'Add_User', $id='');
+        /*$text = 'Verifica el campo el dato es incorrecto';
           $title = $error;
           $type = 'error';
           $controller = 'user';
@@ -162,7 +170,8 @@ class User extends Controller
             'level' => $level,
             'phone' => $phone,
           ];
-          alertMessage($text, $title, $type, $controller, $metod, $id,$datos);
+          
+          $this->vista('pages/add_user',$datos);*/
       }
 /**este else  es despues del if de si no es $_SERVER['REQUEST_METHOD']=='POST'
 entonces hace lo siguente.
